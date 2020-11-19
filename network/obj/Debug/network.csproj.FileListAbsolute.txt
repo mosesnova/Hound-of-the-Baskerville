@@ -1,0 +1,15 @@
+D:\eexnetworklibrary-master\network\bin\Debug\network.exe.config
+D:\eexnetworklibrary-master\network\bin\Debug\network.exe
+D:\eexnetworklibrary-master\network\bin\Debug\network.pdb
+D:\eexnetworklibrary-master\network\obj\Debug\network.csprojAssemblyReference.cache
+D:\eexnetworklibrary-master\network\obj\Debug\MainWindow.g.cs
+D:\eexnetworklibrary-master\network\obj\Debug\App.g.cs
+D:\eexnetworklibrary-master\network\obj\Debug\network_MarkupCompile.cache
+D:\eexnetworklibrary-master\network\obj\Debug\network_MarkupCompile.lref
+D:\eexnetworklibrary-master\network\obj\Debug\MainWindow.baml
+D:\eexnetworklibrary-master\network\obj\Debug\network.g.resources
+D:\eexnetworklibrary-master\network\obj\Debug\network.Properties.Resources.resources
+D:\eexnetworklibrary-master\network\obj\Debug\network.csproj.GenerateResource.cache
+D:\eexnetworklibrary-master\network\obj\Debug\network.csproj.CoreCompileInputs.cache
+D:\eexnetworklibrary-master\network\obj\Debug\network.exe
+D:\eexnetworklibrary-master\network\obj\Debug\network.pdb

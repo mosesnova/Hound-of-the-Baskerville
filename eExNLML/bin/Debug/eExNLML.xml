@@ -1,0 +1,1882 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>eExNLML</name>
+    </assembly>
+    <members>
+        <member name="M:eExNLML.DefaultControllers.ConditionalTrafficSplitterController.CreateOutPortB(eExNetworkLibrary.TrafficHandler)">
+            <summary>
+            Creates the Out Port B
+            </summary>
+            <param name="h">The traffic handler to create the port for</param>
+            <returns>The created port</returns>
+        </member>
+        <member name="M:eExNLML.DefaultControllers.RouterController.CreateRoutedTrafficAnalyzerPort(eExNetworkLibrary.TrafficHandler)">
+            <summary>
+            Creates a Routed Traffic Analyzer port
+            </summary>
+            <param name="h">The traffic handler to create the port for</param>
+            <returns>The created port</returns>
+        </member>
+        <member name="M:eExNLML.DefaultControllers.TrafficSplitterController.CreateClonePort(eExNetworkLibrary.TrafficHandler)">
+            <summary>
+            Creates a Clone Port
+            </summary>
+            <param name="h">The traffic handler to create the port for</param>
+            <returns>The created port</returns>
+        </member>
+        <member name="T:eExNLML.Extensibility.ExtensionLoader">
+            <summary>
+            This class is capable of loading extensions for the network library management layer. 
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.ExtensionLoader.LoadExtensions(System.String)">
+            <summary>
+            Loads all handler definitions (extensions) from a specified DLL. 
+            </summary>
+            <param name="strPath">The path of the DLL to load the extensions from.</param>
+            <returns>The loaded extensions</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.ExtensionLoader.LoadExtensionsFromDirectory(System.String)">
+            <summary>
+            Loads all handler definitions (extensions) from all DLLs in a specified directory. 
+            </summary>
+            <param name="strPath">The path of the directory which contains the DLLs</param>
+            <returns>The loaded extensions</returns>
+        </member>
+        <member name="T:eExNLML.Extensibility.HTTPModifierActionDefinition">
+            <summary>
+            This provides an abstract base class for all HTTP modifier action conditions
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierActionDefinition.Name">
+            <summary>
+            Returns the name of this modifier action
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierActionDefinition.PluginType">
+            <summary>
+            Gets the type of the plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierActionDefinition.Description">
+            <summary>
+            Gets a simple description of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierActionDefinition.Author">
+            <summary>
+            Gets the author of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierActionDefinition.WebLink">
+            <summary>
+            Gets a web-link for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierActionDefinition.PluginKey">
+            <summary>
+            Gets an unique key for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierActionDefinition.Version">
+            <summary>
+            Gets the version of this plug-in
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.HTTPModifierActionDefinition.#ctor">
+            <summary>
+            Creates a new instance of this class.
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.HTTPModifierActionDefinition.Create">
+            <summary>
+            Must create a new HTTP modifier action
+            </summary>
+            <returns>A new HTTP modifier action</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HTTPModifierActionDefinition.Create(eExNLML.IO.NameValueItem)">
+            <summary>
+            Must create a HTTP modifier action according to the given nested configuration
+            </summary>
+            <param name="nviConfigurationRoot">The configuration as name value items</param>
+            <returns>A new HTTP modifier action</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HTTPModifierActionDefinition.GetConfiguration(eExNetworkLibrary.TrafficModifiers.StreamModification.HTTP.HTTPStreamModifierAction)">
+            <summary>
+            Must return the configuration of the given HTTP modifier action
+            </summary>
+            <param name="htCondition">The HTTP modifier action to get the configuration for</param>
+            <returns>The configuration of the given HTTP modifier action as an array of name value items</returns>
+        </member>
+        <member name="T:eExNLML.Extensibility.IHandlerController">
+            <summary>
+            This intrerface defines a base for all TrafficHandler controller classes, which define TrafficHandler ports, handle linking and the loading and saving of configuration.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerController.AvailableTrafficHandlerPorts">
+            <summary>
+            Gets all traffic handler ports which are attachable at the moment
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerController.BaseDefinition">
+            <summary>
+            Gets the definition for this handler.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerController.ConfigurationLoader">
+            <summary>
+            Gets the configuration loader instance created by this definition.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerController.ConfigurationWriter">
+            <summary>
+            Gets the configuration writer instance created by this definition.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerController.Environment">
+            <summary>
+            Gets the environment associated with this controller.
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.IHandlerController.GetPortForName(System.String)">
+            <summary>
+            Gets the port which is associated with the given name.
+            </summary>
+            <param name="strName">The name to get the port for.</param>
+            <returns>The found port or null if not found.</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.IHandlerController.LoadConfiguration(System.Xml.XmlReader)">
+            <summary>
+            Reads the configuration of this handler from the given XmlWriter.
+            </summary>
+            <param name="xmlReader">The XmlWriter to read the configuration from.</param>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerController.Name">
+            <summary>
+            Gets or sets this controllers unique name. 
+            </summary>
+        </member>
+        <member name="E:eExNLML.Extensibility.IHandlerController.NameChanging">
+            <summary>
+            This event is fired whenever the name is changing and allows to cancle the name change.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerController.Properties">
+            <summary>
+            Gets a dictionary where custom named properties of this controller can be stored.
+            <remarks>The types which also support saving and loading are: int, string, float, double, IPAddress, Subnetmask, MACAddress. All other types will simply be converted to a string via the ToString() method before saving.</remarks>
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.IHandlerController.SaveConfiguration(System.Xml.XmlWriter)">
+            <summary>
+            Writes the configuration of this handler in the given environment to the given XmlWriter.
+            </summary>
+            <param name="xmlWriter">The XmlWriter to writes the configuration to.</param>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerController.TrafficHandler">
+            <summary>
+            Gets the traffic handler instance created by this definition.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerController.TrafficHandlerPorts">
+            <summary>
+            Gets the traffic handler ports owned by this definition.
+            </summary>
+        </member>
+        <member name="T:eExNLML.Extensibility.IInterfaceFactory">
+            <summary>
+            This interface defines an interface extension factory which is capable of creating and returning more than one extensions at once.
+            This interface makes it possible to create any number of network interface definitions dynamically, for example one for each interface of the computer. 
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.IInterfaceFactory.Create">
+            <summary>
+            Must create and return any number of interface extensions (interface handler definitions).
+            This interface makes it possible to create any number of interface definitions, for example one for each interface of the computer. 
+            </summary>
+            <returns>Some interface extensions</returns>
+        </member>
+        <member name="T:eExNLML.Extensibility.HandlerController">
+            <summary>
+            This class is a base class for all TrafficHandler controller classes, which define TrafficHandler ports, handle linking and the loading and saving of configuration.
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.#ctor(eExNLML.Extensibility.IHandlerDefinition,eExNLML.IEnvironment,System.Object)">
+            <summary>
+            Constructor which creates the TrafficHandler, the configuration reader and writer and the TrafficHandler ports.
+            </summary>
+            <param name="hdDefinition">The HandlerDefinition which is associated with this HandlerController.</param>
+            <param name="env">The environment to associate this controller with</param>
+            <param name="param">A parameter which is provided to all creation-methods of the subclass</param>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerController.Properties">
+            <summary>
+            Gets a dictionary where custom named properties of this controller can be stored.
+            <remarks>The types which also support saving and loading are: int, string, float, double, IPAddress, Subnetmask, MACAddress. All other types will simply be converted to a string via the ToString() method before saving.</remarks>
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerController.Environment">
+            <summary>
+            Gets the environment associated with this controller.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerController.TrafficHandler">
+            <summary>
+            Gets the traffic handler instance created by this definition.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerController.BaseDefinition">
+            <summary>
+            Gets the definition for this handler.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerController.ConfigurationLoader">
+            <summary>
+            Gets the configuration loader instance created by this definition.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerController.ConfigurationWriter">
+            <summary>
+            Gets the configuration writer instance created by this definition.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerController.TrafficHandlerPorts">
+            <summary>
+            Gets the traffic handler ports owned by this definition.
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.GetPortForName(System.String)">
+            <summary>
+            Gets the port which is associated with the given name.
+            </summary>
+            <param name="strName">The name to get the port for.</param>
+            <returns>The found port or null if not found.</returns>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerController.Name">
+            <summary>
+            Gets or sets this controllers unique name. 
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerController.AvailableTrafficHandlerPorts">
+            <summary>
+            Gets all traffic handler ports which are attachable at the moment
+            </summary>
+        </member>
+        <member name="T:eExNLML.Extensibility.HandlerController.NameChangingEventHandler">
+            <summary>
+            This delegate is used to handle NameChanging callbacks. 
+            </summary>
+            <param name="strNewName">The new name which will be assigned.</param>
+            <returns>A bool indicating whether the new name is valid.</returns>
+        </member>
+        <member name="E:eExNLML.Extensibility.HandlerController.NameChanging">
+            <summary>
+            This event is fired whenever the name is changing and allows to cancle the name change.
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.CreateDirectInterfaceIOPort(eExNetworkLibrary.DirectInterfaceIOHandler)">
+            <summary>
+            Creates an InterfaceIO port
+            </summary>
+            <param name="h">The DirectInterfaceIOHandler to create the port for</param>
+            <returns>The created port</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.CreateStandardOutPort(eExNetworkLibrary.TrafficHandler)">
+            <summary>
+            Creates a standard Traffic Handler Out Port
+            </summary>
+            <param name="h">The traffic handler to create the port for</param>
+            <returns>The created port</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.CreateStandardInPort(eExNetworkLibrary.TrafficHandler)">
+            <summary>
+            Creates a standard Traffic Handler In Port
+            </summary>
+            <param name="h">The traffic handler to create the port for</param>
+            <returns>The created port</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.CreateDroppedTrafficAnalyzerPort(eExNetworkLibrary.TrafficHandler)">
+            <summary>
+            Creates a Dropped Traffic Analyzer port
+            </summary>
+            <param name="h">The traffic handler to create the port for</param>
+            <returns>The created port</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.CreateDirectInterfacePort(eExNetworkLibrary.IPInterface)">
+            <summary>
+            Creates an Interface port
+            </summary>
+            <param name="h">The IPInterface to create the port for</param>
+            <returns>The created port</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.Create(System.Object)">
+            <summary>
+            Must create the traffic handler which is defined in this plug-in.
+            This method is called once on plugin creation.
+            </summary>
+            <param name="param">A param associated with the controller to create</param>
+            <returns>The traffic handler which is defined in this plug-in</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.CreateConfigurationLoader(eExNetworkLibrary.TrafficHandler,System.Object)">
+            <summary>
+            Must create a configuration loader for the given traffic handler, which loads the configuration or null to do not support loading. 
+            This method is called once on plugin creation.
+            </summary>
+            <param name="h">The traffic handler to create the configuration loader for</param>
+            <param name="param">A param associated with the controller to create</param>
+            <returns>The configuration loader for the given traffic handler or null, if no configuration loader should be used</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.CreateConfigurationWriter(eExNetworkLibrary.TrafficHandler,System.Object)">
+            <summary>
+            Must create a configuration writer for the given traffic handler, which writes the configuration or null to do not support saving. 
+            This method is called once on plugin creation.
+            </summary>
+            <param name="h">The traffic handler to create the configuration writer for</param>
+            <param name="param">A param associated with the controller to create</param>
+            <returns>The configuration writer for the given traffic handler or null, if no configuration writer should be used</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.CreateTrafficHandlerPorts(eExNetworkLibrary.TrafficHandler,System.Object)">
+            <summary>
+            Must create all traffic handler ports owned by this handler and also connect the appropriate event handlers.
+            This method is called once on plugin creation.
+            </summary>
+            <param name="param">A param associated with the controller to create</param>
+            <returns>All traffic handler ports owned by this handler</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.CreateDefaultPorts(eExNetworkLibrary.TrafficHandler,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Automatically creates the default traffic handler ports.
+            </summary>
+            <param name="h">The traffic handler to create the ports with</param>
+            <param name="bCreateStandardInPort">A bool which defines whether to create a Traffic Handler In Port</param>
+            <param name="bCreateStandardOutPort">A bool which defines whether to create a Traffic Handler Out Port</param>
+            <param name="bCreateInterfaceIOPort">A bool which defines whether to create an Interface IO Port</param>
+            <param name="bCreateDroppedTrafficAnalyzerPort">A bool which defines whether to create a Dropped Traffic Analyzer Port</param>
+            <param name="bCreateInterfacePort">A bool which defines whether to create an Interface Port</param>
+            <returns></returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.SaveConfiguration(System.Xml.XmlWriter)">
+            <summary>
+            Writes the configuration of this handler in the given environment to the given XmlWriter.
+            </summary>
+            <param name="xmlWriter">The XmlWriter to writes the configuration to.</param>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerController.LoadConfiguration(System.Xml.XmlReader)">
+            <summary>
+            Reads the configuration of this handler from the given XmlWriter.
+            </summary>
+            <param name="xmlReader">The XmlWriter to read the configuration from.</param>
+        </member>
+        <member name="T:eExNLML.Extensibility.HandlerDefinition">
+            <summary>
+            Provides a base for the definition of handlers which enables extensibility. 
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerDefinition.Name">
+            <summary>
+            Gets the name of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerDefinition.PluginType">
+            <summary>
+            Gets the type of the plugin
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerDefinition.Description">
+            <summary>
+            Gets a simple description of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerDefinition.Author">
+            <summary>
+            Gets the author of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerDefinition.WebLink">
+            <summary>
+            Gets a web-link for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerDefinition.PluginKey">
+            <summary>
+            Gets an unique key for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HandlerDefinition.Version">
+            <summary>
+            Gets the version of this plug-in
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerDefinition.#ctor">
+            <summary>
+            Constructor which calls all create methods and initializes various properties.
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.HandlerDefinition.Create(eExNLML.IEnvironment)">
+            <summary>
+            This method must create a new HandlerController instance associated with this class.
+            </summary>
+            <param name="env">The environment of the controller</param>
+            <returns>The created HandlerController instance</returns>
+        </member>
+        <member name="T:eExNLML.Extensibility.IHandlerDefinition">
+            <summary>
+            This interface defines a plug-in
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.IHandlerDefinition.Create(eExNLML.IEnvironment)">
+            <summary>
+            This method must create a new HandlerController instance associated with this class.
+            </summary>
+            <returns>The created HandlerController instance</returns>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerDefinition.Author">
+            <summary>
+            Gets the author of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerDefinition.Description">
+            <summary>
+            Gets a simple description of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerDefinition.Name">
+            <summary>
+            Gets the name of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerDefinition.PluginKey">
+            <summary>
+            Gets an unique key for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerDefinition.PluginType">
+            <summary>
+            Gets the type of the plugin
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IHandlerDefinition.WebLink">
+            <summary>
+            Gets a web-link for this plug-in
+            </summary>
+        </member>
+        <member name="T:eExNLML.Extensibility.IInterfaceDefinition">
+            <summary>
+            This interface defines an network interface.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IInterfaceDefinition.InterfaceGUID">
+            <summary>
+            Gets the unique GUID for this interface, which is diffrent for each NIC on each host. 
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IInterfaceDefinition.InterfaceType">
+            <summary>
+            Gets the interface type for this interface.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IPlugin.Author">
+            <summary>
+            Gets the author of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IPlugin.Description">
+            <summary>
+            Gets a simple description of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IPlugin.Name">
+            <summary>
+            Gets the name of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IPlugin.PluginKey">
+            <summary>
+            Gets an unique key for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IPlugin.PluginType">
+            <summary>
+            Gets the type of the plugin
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IPlugin.WebLink">
+            <summary>
+            Gets a web-link for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.IPlugin.Version">
+            <summary>
+            Gets the version of this plug-in
+            </summary>
+        </member>
+        <member name="T:eExNLML.Extensibility.IProtocolDefinition">
+            <summary>
+            Provides an interface for protocol definitions.
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.IProtocolDefinition.Create">
+            <summary>
+            When implemented by a deriven class, must return an instance of the given protocol provider.
+            This method is called whenever a new traffic handler is instantiated, so that a the provider can be added to the traffic handler. 
+            </summary>
+            <returns>A protocol provider</returns>
+        </member>
+        <member name="T:eExNLML.Extensibility.HTTPModifierConditionDefinition">
+            <summary>
+            This provides an abstract base class for all HTTP modifier conditions
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierConditionDefinition.Name">
+            <summary>
+            Returns the name of this modifier condition
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierConditionDefinition.PluginType">
+            <summary>
+            Gets the type of the plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierConditionDefinition.Description">
+            <summary>
+            Gets a simple description of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierConditionDefinition.Author">
+            <summary>
+            Gets the author of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierConditionDefinition.WebLink">
+            <summary>
+            Gets a web-link for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierConditionDefinition.PluginKey">
+            <summary>
+            Gets an unique key for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.HTTPModifierConditionDefinition.Version">
+            <summary>
+            Gets the version of this plug-in
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.HTTPModifierConditionDefinition.#ctor">
+            <summary>
+            Creates a new instance of this class.
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.HTTPModifierConditionDefinition.Create">
+            <summary>
+            Must create a new HTTP modifier condition
+            </summary>
+            <returns>A new HTTP modifier condition</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HTTPModifierConditionDefinition.Create(eExNLML.IO.NameValueItem)">
+            <summary>
+            Must create a HTTP modifier condition according to the given nested configuration
+            </summary>
+            <param name="nviConfigurationRoot">The configuration as name value items</param>
+            <returns>A new HTTP modifier condition</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.HTTPModifierConditionDefinition.GetConfiguration(eExNetworkLibrary.TrafficModifiers.StreamModification.HTTP.HTTPStreamModifierCondition)">
+            <summary>
+            Must return the configuration of the given HTTP modifier condition
+            </summary>
+            <param name="htCondition">The HTTP modifier condition to get the configuration for</param>
+            <returns>The configuration of the given HTTP modifier condition as an array of name value items</returns>
+        </member>
+        <member name="T:eExNLML.Extensibility.ProtocolDefinition">
+            <summary>
+            Provides a base class for protocol definitions.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.ProtocolDefinition.Name">
+            <summary>
+            Gets the name of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.ProtocolDefinition.PluginType">
+            <summary>
+            Gets the type of the plugin
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.ProtocolDefinition.Description">
+            <summary>
+            Gets a simple description of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.ProtocolDefinition.Author">
+            <summary>
+            Gets the author of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.ProtocolDefinition.WebLink">
+            <summary>
+            Gets a web-link for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.ProtocolDefinition.PluginKey">
+            <summary>
+            Gets an unique key for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.ProtocolDefinition.Version">
+            <summary>
+            Gets the version of this plug-in
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.ProtocolDefinition.#ctor">
+            <summary>
+            Constructor which calls all create methods and initializes various properties.
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.ProtocolDefinition.Create">
+            <summary>
+            When implemented by a deriven class, must return an instance of the given protocol provider.
+            This method is called whenever a new traffic handler is instantiated, so that a the provider can be added to the traffic handler. 
+            </summary>
+            <returns>A protocol provider</returns>
+        </member>
+        <member name="T:eExNLML.Extensibility.ISubPlugInDefinition`1">
+            <summary>
+            Provides an interface for traffic splitter rule definitions
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.ISubPlugInDefinition`1.Create">
+            <summary>
+            Must create a new instance of this sub-plugin
+            </summary>
+            <returns>A new instance of this sub-plugin</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.ISubPlugInDefinition`1.Create(eExNLML.IO.NameValueItem)">
+            <summary>
+            Must create a new instance of this sub-plugin according to the given nested configuration
+            </summary>
+            <param name="nviConfigurationRoot">The configuration as name value items</param>
+            <returns>A new instance of this sub-plugin</returns>
+        </member>
+        <member name="P:eExNLML.Extensibility.ISubPlugInDefinition`1.Name">
+            <summary>
+            Returns the name of the sub-plugin which is described by this definition. The name has to be exactly the same as in the name-property of the corresponding sub-plugin. 
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.ISubPlugInDefinition`1.GetConfiguration(`0)">
+            <summary>
+            Must return the configuration of the given sub-plugin
+            </summary>
+            <param name="tsrRule">The sub-plugin rule to get the configuration for</param>
+            <returns>The configuration of the given sub-plugin as an array of name value items</returns>
+        </member>
+        <member name="T:eExNLML.Extensibility.NetworkLibraryInterfaceExtensionFactory">
+            <summary>
+            This is the default extension factory of the Network Library Management Layer.
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.NetworkLibraryInterfaceExtensionFactory.Create">
+            <summary>
+            Returns all interface extensions known by the Network Library Management Layer by default. This normally includes all Ethernet interfaces of the computer.
+            </summary>
+            <returns>All interface extensions known by the Network Library Management Layer by default</returns>
+        </member>
+        <member name="T:eExNLML.Extensibility.TrafficSplitterRuleDefinition">
+            <summary>
+            This provides an abstract base class for traffic splitter rule definitions
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.TrafficSplitterRuleDefinition.Name">
+            <summary>
+            Returns the name of the traffic splitter rule which is described by this definition. 
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.TrafficSplitterRuleDefinition.PluginType">
+            <summary>
+            Gets the type of the plugin
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.TrafficSplitterRuleDefinition.Description">
+            <summary>
+            Gets a simple description of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.TrafficSplitterRuleDefinition.Author">
+            <summary>
+            Gets the author of this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.TrafficSplitterRuleDefinition.WebLink">
+            <summary>
+            Gets a web-link for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.TrafficSplitterRuleDefinition.PluginKey">
+            <summary>
+            Gets an unique key for this plug-in
+            </summary>
+        </member>
+        <member name="P:eExNLML.Extensibility.TrafficSplitterRuleDefinition.Version">
+            <summary>
+            Gets the version of this plug-in
+            </summary>
+        </member>
+        <member name="M:eExNLML.Extensibility.TrafficSplitterRuleDefinition.ConvertActionToNameValueItem(eExNetworkLibrary.TrafficSplitting.TrafficSplitterActions)">
+            <summary>
+            Converts a action item to a name value item
+            </summary>
+            <param name="tsAction">The action item to convert</param>
+            <returns>A name value item representing the given params</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.TrafficSplitterRuleDefinition.ConvertToAction(eExNLML.IO.NameValueItem)">
+            <summary>
+            Converts a name value item to a action item
+            </summary>
+            <param name="nvi">The name value item to convert</param>
+            <returns>The action item</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.TrafficSplitterRuleDefinition.Create">
+            <summary>
+            Must create a new traffic splitter rule
+            </summary>
+            <returns>A new traffic splitter rule</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.TrafficSplitterRuleDefinition.Create(eExNLML.IO.NameValueItem)">
+            <summary>
+            Must create a traffic splitter rule according to the given nested configuration
+            </summary>
+            <param name="nviConfigurationRoot">The configuration as name value items</param>
+            <returns>A new traffic splitter rule</returns>
+        </member>
+        <member name="M:eExNLML.Extensibility.TrafficSplitterRuleDefinition.GetConfiguration(eExNetworkLibrary.TrafficSplitting.TrafficSplitterRule)">
+            <summary>
+            Must return the configuration of the given traffic splitter rule
+            </summary>
+            <param name="tsrRule">The traffic splitter rule to get the configuration for</param>
+            <returns>The configuration of the given traffic splitter rule as an array of name value items</returns>
+        </member>
+        <member name="F:eExNLML.Repository.DependencyType.Extension">
+            <summary>
+            Another extension from the eex repository
+            </summary>
+        </member>
+        <member name="F:eExNLML.Repository.DependencyType.Library">
+            <summary>
+            A 3rd party software library
+            </summary>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToIPAddress(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of ip addresses
+            </summary>
+            <param name="strString">The name value item which should be converted</param>
+            <returns>An array of ip addresses</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToSubnetmask(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of subnetmasks
+            </summary>
+            <param name="strString">The name value item which should be converted</param>
+            <returns>An array of subnetmasks</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToMACAddress(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of MAC addresses
+            </summary>
+            <param name="strString">The name value item which should be converted</param>
+            <returns>An array of MAC addresses</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToInt(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of integers
+            </summary>
+            <param name="strString">The name value item which should be converted</param>
+            <returns>An array of integers</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToDouble(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of doubles
+            </summary>
+            <param name="strString">The name value item which should be converted</param>
+            <returns>An array of doubles</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToString(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of strings
+            </summary>
+            <param name="strString">The name value item which should be converted</param>
+            <returns>An array of strings</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToBools(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of bools
+            </summary>
+            <param name="strString">The name value item which should be converted</param>
+            <returns>An array of bools</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToNameValueItems(System.String,System.Net.IPAddress)">
+            <summary>
+            Converts a IP address to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="ipa">The IP address which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToNameValueItems(System.String,System.Net.IPAddress[])">
+            <summary>
+            Converts an array of IP addresses to name value items with the given name
+            </summary>
+            <param name="strName">The name of the name value items</param>
+            <param name="aripa">The IP addresses which should be converted to the valuees of the name value items</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToNameValueItems(System.String,eExNetworkLibrary.Subnetmask)">
+            <summary>
+            Converts a subnetmask to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="smMask">The subnetmask which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToNameValueItems(System.String,eExNetworkLibrary.Subnetmask[])">
+            <summary>
+            Converts an array of subnetmasks to name value items with the given name
+            </summary>
+            <param name="strName">The name of the name value items</param>
+            <param name="arMasks">The subnetmasks which should be converted to the valuees of the name value items</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToNameValueItems(System.String,eExNetworkLibrary.MACAddress)">
+            <summary>
+            Converts a MAC address to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="maAddress">The MAC address which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToNameValueItems(System.String,eExNetworkLibrary.MACAddress[])">
+            <summary>
+            Converts an array of MAC addresses to name value items with the given name
+            </summary>
+            <param name="strName">The name of the name value items</param>
+            <param name="arAddresses">The MAC addresses which should be converted to the valuees of the name value items</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToNameValueItems(System.String,System.Int32)">
+            <summary>
+            Converts an integer to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="iValue">The integer which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToNameValueItems(System.String,System.Double)">
+            <summary>
+            Converts a double to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="dValue">The double which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToNameValueItems(System.String,System.String)">
+            <summary>
+            Converts a string to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="strValue">The string which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.ConfigurationParser.ConvertToNameValueItems(System.String,System.Boolean)">
+            <summary>
+            Converts a bool to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="bValue">The bool which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="T:eExNLML.IO.HandlerConfigurationLoader">
+            <summary>
+            This class provides a base implementation for traffic handler configuration loaders
+            </summary>
+        </member>
+        <member name="P:eExNLML.IO.HandlerConfigurationLoader.TrafficHandlerToConfigure">
+            <summary>
+            Gets the traffic handler associated with this handler configuration loader
+            </summary>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationLoader.#ctor(eExNetworkLibrary.TrafficHandler)">
+            <summary>
+            Creates a new instance of this class associated with the given traffic handler
+            </summary>
+            <param name="h">The traffic handler to associate with this configruation loader</param>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationLoader.LoadConfiguration(System.Xml.XmlReader,eExNLML.IEnvironment)">
+            <summary>
+            Loads the configuration from the given XmlReader
+            </summary>
+            <param name="xmw">The XmlReader to load the configuration for</param>
+            <param name="eEnviornment">The environment to associate with the traffic handler</param>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationLoader.ParseConfiguration(System.Collections.Generic.Dictionary{System.String,eExNLML.IO.NameValueItem[]},eExNLML.IEnvironment)">
+            <summary>
+            This method must be overriden by any derived class. It must configure the given traffic handler according to the given name value configuration items.
+            </summary>
+            <param name="strNameValues">A dictionary filled with name value items which store the configuration to apply to your traffic handler</param>
+            <param name="eEnviornment">The environment to associate with the traffic handler</param>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationLoader.ConvertToIPAddress(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of ip addresses
+            </summary>
+            <param name="nviConfiguration">The name value item which should be converted</param>
+            <returns>An array of ip addresses</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationLoader.ConvertToSubnetmask(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of subnetmasks
+            </summary>
+            <param name="nviConfiguration">The name value item which should be converted</param>
+            <returns>An array of subnetmasks</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationLoader.ConvertToMACAddress(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of MAC addresses
+            </summary>
+            <param name="nviConfiguration">The name value item which should be converted</param>
+            <returns>An array of MAC addresses</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationLoader.ConvertToInt(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of integers
+            </summary>
+            <param name="nviConfiguration">The name value item which should be converted</param>
+            <returns>An array of integers</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationLoader.ConvertToDouble(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of doubles
+            </summary>
+            <param name="nviConfiguration">The name value item which should be converted</param>
+            <returns>An array of doubles</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationLoader.ConvertToString(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of strings
+            </summary>
+            <param name="nviConfiguration">The name value item which should be converted</param>
+            <returns>An array of strings</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationLoader.ConvertToBools(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Converts an array of name value items to an array of bools
+            </summary>
+            <param name="nviConfiguration">The name value item which should be converted</param>
+            <returns>An array of bools</returns>
+        </member>
+        <member name="T:eExNLML.IO.HandlerConfigurationWriter">
+            <summary>
+            This class builds the base for all configuration writers
+            </summary>
+        </member>
+        <member name="P:eExNLML.IO.HandlerConfigurationWriter.TrafficHandlerToSave">
+            <summary>
+            Gets the traffic handler which is associated with this configuration writer
+            </summary>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.#ctor(eExNetworkLibrary.TrafficHandler)">
+            <summary>
+            Creates a new instance of this class associated with the given traffic handler
+            </summary>
+            <param name="h">The traffic handler to associate with this configuration writer</param>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.SaveConfiguration(System.Xml.XmlWriter,eExNLML.IEnvironment)">
+            <summary>
+            Writes the configuration to the given XmlWriter
+            </summary>
+            <param name="xmw">The XmlWriter to write the configuration to</param>
+            <param name="eEnviornment">The environment to associate with the given configuration</param>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.AddConfiguration(System.Collections.Generic.List{eExNLML.IO.NameValueItem},eExNLML.IEnvironment)">
+            <summary>
+            This method must be overriden by all derived classes. It has to add it's own configuration items to the given list.
+            </summary>
+            <param name="lNameValueItems">The list to add all configuration items to</param>
+            <param name="eEnviornment">The environment</param>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.ConvertToNameValueItems(System.String,System.Net.IPAddress)">
+            <summary>
+            Converts a IP address to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="ipa">The IP address which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.ConvertToNameValueItems(System.String,System.Net.IPAddress[])">
+            <summary>
+            Converts an array of IP addresses to name value items with the given name
+            </summary>
+            <param name="strName">The name of the name value items</param>
+            <param name="aripa">The IP addresses which should be converted to the valuees of the name value items</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.ConvertToNameValueItems(System.String,eExNetworkLibrary.Subnetmask)">
+            <summary>
+            Converts a subnetmask to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="smMask">The subnetmask which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.ConvertToNameValueItems(System.String,eExNetworkLibrary.Subnetmask[])">
+            <summary>
+            Converts an array of subnetmasks to name value items with the given name
+            </summary>
+            <param name="strName">The name of the name value items</param>
+            <param name="arMasks">The subnetmasks which should be converted to the valuees of the name value items</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.ConvertToNameValueItems(System.String,eExNetworkLibrary.MACAddress)">
+            <summary>
+            Converts a MAC address to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="maAddress">The MAC address which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.ConvertToNameValueItems(System.String,eExNetworkLibrary.MACAddress[])">
+            <summary>
+            Converts an array of MAC addresses to name value items with the given name
+            </summary>
+            <param name="strName">The name of the name value items</param>
+            <param name="arAddresses">The MAC addresses which should be converted to the valuees of the name value items</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.ConvertToNameValueItems(System.String,System.Int32)">
+            <summary>
+            Converts an integer to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="iValue">The integer which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.ConvertToNameValueItems(System.String,System.Double)">
+            <summary>
+            Converts a double to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="dValue">The double which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.ConvertToNameValueItems(System.String,System.String)">
+            <summary>
+            Converts a string to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="strValue">The string which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="M:eExNLML.IO.HandlerConfigurationWriter.ConvertToNameValueItems(System.String,System.Boolean)">
+            <summary>
+            Converts a bool to a name value item with the given name
+            </summary>
+            <param name="strName">The name of the name value item</param>
+            <param name="bValue">The bool which should be converted to the value of the name value item</param>
+            <returns>An array of name value items which represents the given parameters</returns>
+        </member>
+        <member name="T:eExNLML.IO.NameValueItem">
+            <summary>
+            Represents a name value item for storing configurations
+            </summary>
+        </member>
+        <member name="P:eExNLML.IO.NameValueItem.Name">
+            <summary>
+            Gets the name of this item
+            </summary>
+        </member>
+        <member name="P:eExNLML.IO.NameValueItem.Value">
+            <summary>
+            Gets the value of this item
+            </summary>
+        </member>
+        <member name="M:eExNLML.IO.NameValueItem.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of this class with the given name and value
+            </summary>
+            <param name="strName">The name</param>
+            <param name="strValue">The value</param>
+        </member>
+        <member name="M:eExNLML.IO.NameValueItem.AddChildItem(eExNLML.IO.NameValueItem)">
+            <summary>
+            Adds a child configuration item
+            </summary>
+            <param name="nvi">The child configuration item to add</param>
+        </member>
+        <member name="M:eExNLML.IO.NameValueItem.AddChildRange(eExNLML.IO.NameValueItem[])">
+            <summary>
+            Adds a child configuration item range
+            </summary>
+            <param name="nvi">The child configuration item range to add</param>
+        </member>
+        <member name="P:eExNLML.IO.NameValueItem.ChildItems">
+            <summary>
+            Gets all child configuration items
+            </summary>
+        </member>
+        <member name="M:eExNLML.IO.NameValueItem.ContainsChildItem(System.String)">
+            <summary>
+            Returns a bool indicating whether this name value item contains an item with the given name.
+            </summary>
+            <param name="strName">The name to search for.</param>
+            <returns>A bool indicating whether this name value item contains an item with the given name</returns>
+        </member>
+        <member name="M:eExNLML.IO.NameValueItem.GetChildsByName(System.String)">
+            <summary>
+            Returns all child configuration items for the given name
+            </summary>
+            <param name="strName">The name of the items to search</param>
+            <returns>All items with the given name stored in an array, or an empty array if no items with the given name were found.</returns>
+        </member>
+        <member name="T:eExNLML.Link">
+            <summary>
+            This class defines a link between two traffic handler ports.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Link.Alice">
+            <summary>
+            The first port this link is connected to.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Link.Bob">
+            <summary>
+            The second port this link is connected to.
+            </summary>
+        </member>
+        <member name="M:eExNLML.Link.#ctor(eExNLML.TrafficHandlerPort,eExNLML.TrafficHandlerPort)">
+            <summary>
+            Creates a new instance of this class.
+            </summary>
+            <param name="pAlice">The first port this link is connected to</param>
+            <param name="pBob">The second port this link is connected to</param>
+        </member>
+        <member name="T:eExNLML.NetworkCompilation">
+            <summary>
+            This class presents a network compilation based on traffic handlers and the eEx Network Library.
+            This compilation can be used to build diffrent UIs upon the network library. Also it supports saving and loading. 
+            </summary>
+        </member>
+        <member name="P:eExNLML.NetworkCompilation.Environment">
+            <summary>
+            Gets or sets the environment of this compilation. The default value of this property is <b>this</b>, but it can be used to override the environment in special cases. 
+            </summary>
+        </member>
+        <member name="T:eExNLML.NetworkCompilation.InterfaceNotFoundCallback">
+            <summary>
+            Defines a callback to handle the case of a missing interface.
+            This case happens very often, for example if you save a network compilation and load it on another computer, since the GUIDs of the network interfaces
+            will not be the same.
+            </summary>
+            <param name="sender">The class which called the callback</param>
+            <param name="args">The arguments of the callback</param>
+            <returns>The callback must return the appropriate handler definition for the interface or null</returns>
+        </member>
+        <member name="T:eExNLML.NetworkCompilation.PluginNotFoundCallback">
+            <summary>
+            Defines a callback to handle the case of a missing extension.
+            </summary>
+            <param name="sender">The class which called the callback</param>
+            <param name="args">The arguments of the callback</param>
+            <returns>The callback must return the appropriate handler definition which can be used as replacement for the missing extension</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.#ctor">
+            <summary>
+            Creates a new network compilation.
+            </summary>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.AddPlugins(System.Collections.Generic.IEnumerable{eExNLML.Extensibility.IPlugin})">
+            <summary>
+            Adds the given plug-ins to this compilation.<br />
+            Please see AddPlugin(Plugin) for more details.
+            </summary>
+            <param name="enumPlugin">The plug-ins to add</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.AddPlugin(eExNLML.Extensibility.IPlugin)">
+            <summary>
+            Adds the given plug-in to this compilation. Adding all plug-ins you need should be the first step before loading or creating a compilation. 
+            <remarks>
+            If you add a handler or interface (IHandlerDefinition or IInterfaceDefinition) definition, the compilation will become aware of the definition, so that files which use the plug-in will be loadable. <br />
+            If you add a protocol definition (IProtocolDefinition), the protocol will added to the parsing engine, for all handlers which are created after the protocol definition was added. <br />
+            Other plugins (like HTTP modifier actions or traffic splitter rules) will become available to the engine as soon as they are loaded. 
+            </remarks>
+            </summary>
+            <param name="pPlugin">The plug-in to add</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.RemovePlugIn(eExNLML.Extensibility.IPlugin)">
+            <summary>
+            Removes the given plug-in from this compilation.
+            </summary>
+            <param name="pPluginToRemove">The definition to remove.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.RemovePlugIn(System.String)">
+            <summary>
+            Removes the given plug-in from this compilation.
+            </summary>
+            <param name="strPluginKey">The key of the plug-in to remove.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.RemovePlugIn(System.String,System.String)">
+            <summary>
+            Removes the given interface plug-in from this compilation.
+            </summary>
+            <param name="strPluginKey">The key of the interface plug-in to remove.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.ContainsPlugIn(eExNLML.Extensibility.IPlugin)">
+            <summary>
+            Checks whether a specific plugin is known within this compilation.
+            </summary>
+            <param name="pPluginToCheck">The plug-in to check for.</param>
+            <returns>A bool indicating whether a specific plug-in is known within this compilation.</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.ContainsPlugIn(System.String)">
+            <summary>
+            Checks whether a specific plugin is known within this compilation.
+            </summary>
+            <param name="strPluginKey">The plug-in key to check for.</param>
+            <returns>A bool indicating whether a specific plug-in is known within this compilation.</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.ContainsPlugIn(System.String,System.String)">
+            <summary>
+            Checks whether a specific interface plugin is known within this compilation.
+            </summary>
+            <param name="strPluginKey">The plug-in key to check for.</param>
+            <param name="strInterfaceGUID">The interface GUID to check for.</param>
+            <returns>A bool indicating whether a specific interface plug-in is known within this compilation.</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.GetPluginsByType(System.String)">
+            <summary>
+            Returns all known plug-ins with the given type.
+            </summary>
+            <param name="strType">The type to search plug-ins for.</param>
+            <returns>All known plug-ins with the given type.</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.GetPlugInByKey(System.String)">
+            <summary>
+            Returns the plug-in with the given plug-in key.
+            </summary>
+            <param name="strName">The key to search a plug-in for.</param>
+            <returns>The plug-in with the given plug-in key or null, if no plug-in was found.</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.GetPlugInByKey(System.String,System.String)">
+            <summary>
+            Returns the interface plug-in with the given plug-in key.
+            </summary>
+            <param name="strName">The key to search a plug-in for.</param>
+            <param name="strInterfaceGUID">The interface GUID of the plug-in to find.</param>
+            <returns>The interface plug-in with the given plug-in key and the given GUID or null, if no plug-in was found.</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.GetPlugins">
+            <summary>
+            Gets all plug-ins known by this compilation.
+            </summary>
+            <returns>All plug-ins known by this compilation.</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.ClearPlugIns">
+            <summary>
+            Removes all plug-ins from this compilation.
+            </summary>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.RemovePlugInsByType(System.String)">
+            <summary>
+            Removes all plug-ins with the given type from this compilation.
+            <param name="strPluginType">The plug-in type to remove all plug-ins for.</param>
+            </summary>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.GetValidName(eExNLML.Extensibility.IHandlerController)">
+            <summary>
+            Gets a valid name for the given handler controller.
+            </summary>
+            <param name="hcToAdd">The controller to get the valid name for.</param>
+            <returns>A suggested, valid and unique name for the given controller.</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.Add(eExNLML.Extensibility.IHandlerDefinition)">
+            <summary>
+            Adds a controller which is created from the given handler definition to this compilation and automatically generates a valid name.
+            </summary>
+            <param name="hdToAdd">The definition to create the controller to add from.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.Add(eExNLML.Extensibility.IHandlerController)">
+            <summary>
+            Adds a controller to this compilation. The name of the controller must be unique and it has to be associated with this compilation. 
+            </summary>
+            <param name="hcToAdd">The controller to add.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.Remove(eExNLML.Extensibility.IHandlerController)">
+            <summary>
+            Removes a controller from this compilation. 
+            </summary>
+            <param name="hcToRemove">The controller to remove.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.Unlink(eExNLML.Extensibility.IHandlerController)">
+            <summary>
+            Unlinks the given controller.
+            </summary>
+            <param name="hcToRemove">The controller to remove all links from</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.RemoveAndShutdown(eExNLML.Extensibility.IHandlerController)">
+            <summary>
+            Removes a controller from this compilation and shuts it down.
+            </summary>
+            <param name="hcToRemove">The controller to remove and shut down.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.RemoveAndShutdown(eExNLML.Extensibility.IHandlerController,eExNLML.TaskNotificationCallback)">
+            <summary>
+            Removes a controller from this compilation and shuts it down.
+            </summary>
+            <param name="hcToRemove">The controller to remove and shut down.</param>
+            <param name="tncCallback">A callback used for notification of task state changes.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.CleanupHandler(eExNLML.Task)">
+            <summary>
+            Calls Cleanup on the TrafficHandler which is associated with the HandlerController which is the Tag of the given Task
+            </summary>
+            <param name="t">The calling task</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.UnlinkHandler(eExNLML.Task)">
+            <summary>
+            Calls Unlink on the HandlerController which is the Tag of the given Task
+            </summary>
+            <param name="t">The calling task</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.StopHandler(eExNLML.Task)">
+            <summary>
+            Calls Stop on the TrafficHandler which is associated with the HandlerController which is the Tag of the given Task
+            </summary>
+            <param name="t">The calling task</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.Contains(eExNLML.Extensibility.IHandlerController)">
+            <summary>
+            Checks whether the given controller is contained in this compilation.
+            </summary>
+            <param name="hcToCheck">The controller to check for</param>
+            <returns>A bool indicating whether the given controller is contained in this compilation.</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.Clear">
+            <summary>
+            Clears this compilation without shutting down the handlers and controllers.
+            </summary>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.Shutdown(eExNLML.TaskNotificationCallback)">
+            <summary>
+            Clears this compilation and shuts down all the handlers and controllers.
+            </summary>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.RemoveLink(eExNLML.TrafficHandlerPort,eExNLML.TrafficHandlerPort)">
+            <summary>
+            Removes a link with the given ports from the link list.
+            </summary>
+            <param name="sender">The first port of the link.</param>
+            <param name="attacher">The second port of the link.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.AddLink(eExNLML.TrafficHandlerPort,eExNLML.TrafficHandlerPort)">
+            <summary>
+            Adds a link with the given ports to the link list
+            </summary>
+            <param name="sender">The first port of the link.</param>
+            <param name="attacher">The second port of the link.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.IsConnected(eExNLML.TrafficHandlerPort,eExNLML.TrafficHandlerPort)">
+            <summary>
+            Checks whether the two given ports are connected.
+            </summary>
+            <param name="thpAlice">The first port to check.</param>
+            <param name="thpBob">The second port to check.</param>
+            <returns>A bool indicating whether the two given ports are connected.</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.Connect(eExNLML.TrafficHandlerPort,eExNLML.TrafficHandlerPort)">
+            <summary>
+            Connects two traffic handler ports.
+            </summary>
+            <param name="thpAlice">The first port to connect.</param>
+            <param name="thpBob">The second port to connect.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.Disconnect(eExNLML.TrafficHandlerPort,eExNLML.TrafficHandlerPort)">
+            <summary>
+            Disconnects two traffic handler ports.
+            </summary>
+            <param name="thpAlice">The first port to disconnect.</param>
+            <param name="thpBob">The second port to disconnect.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.GetScanners">
+            <summary>
+            Gets all active scanners in the current compilation.
+            </summary>
+            <returns>All active scanners in the current compilation</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.GetMITMAttacks">
+            <summary>
+            Gets all active MITM attacks in the current compilation.
+            </summary>
+            <returns>All active MITM attacks in the current compilation</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.GetAttacks">
+            <summary>
+            Gets all active attacks in the current compilation.
+            </summary>
+            <returns>All active attacks in the current compilation</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.GetRouters">
+            <summary>
+            Gets all active routers in the current compilation.
+            </summary>
+            <returns>All active routers in the current compilation</returns>
+        </member>
+        <member name="P:eExNLML.NetworkCompilation.ActiveHandlers">
+            <summary>
+            Gets all active traffic handlers in the current compilation.
+            </summary>
+        </member>
+        <member name="P:eExNLML.NetworkCompilation.Links">
+            <summary>
+            Gets all links of this compilation.
+            </summary>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.GetControllerForName(System.String)">
+            <summary>
+            Gets a controller by its name.
+            </summary>
+            <param name="strName">The name to get the controller for.</param>
+            <returns>The controller with the given name or null if no controller was found.</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.GetHandlerForName(System.String)">
+            <summary>
+            Gets a traffic handler by its name.
+            </summary>
+            <param name="strName">The name to get the traffic handler for.</param>
+            <returns>The traffic handler with the given name, or null if no traffic handler was found.</returns>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.GetControllerForHandler(eExNetworkLibrary.TrafficHandler)">
+            <summary>
+            Gets the controller for the given traffic handler.
+            </summary>
+            <param name="thHandler">The handler to get the controller for</param>
+            <returns>The controller which belongs to the given handler, or null if no controller was found.</returns>
+        </member>
+        <member name="P:eExNLML.NetworkCompilation.Controllers">
+            <summary>
+            Gets all active controllers.
+            </summary>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.SaveToFile(System.String)">
+            <summary>
+            Writes this compilation to the file with the given name.
+            </summary>
+            <param name="strFilename">The name of the file to write this compilation to.</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.LoadFromFile(System.String)">
+            <summary>
+            Loads a compilation from a file. 
+            </summary>
+            <param name="strFilename">The file to load the compilation from</param>
+        </member>
+        <member name="M:eExNLML.NetworkCompilation.LoadFromFile(System.String,eExNLML.NetworkCompilation.InterfaceNotFoundCallback,eExNLML.NetworkCompilation.PluginNotFoundCallback)">
+            <summary>
+            Loads a compilation from a file. 
+            </summary>
+            <param name="strFilename">The file to load the compilation from</param>
+            <param name="arKnownDefinitions">An array containing all known handler definitions</param>
+            <param name="pluginNotFoundCallback">A callback to handle the case of missing plug-ins</param>
+        </member>
+        <member name="T:eExNLML.InterfaceNotFoundEventArgs">
+            <summary>
+            This class represents the arguments for an InterfaceNotFoundCallback.
+            </summary>
+        </member>
+        <member name="P:eExNLML.InterfaceNotFoundEventArgs.SystemGUID">
+            <summary>
+            Gets the system GUID of the missing interface.
+            </summary>
+        </member>
+        <member name="P:eExNLML.InterfaceNotFoundEventArgs.InterfaceName">
+            <summary>
+            Gets the name of the missing interface.
+            </summary>
+        </member>
+        <member name="P:eExNLML.InterfaceNotFoundEventArgs.PluginKey">
+            <summary>
+            Gets the plugin key of the missing interface.
+            </summary>
+        </member>
+        <member name="M:eExNLML.InterfaceNotFoundEventArgs.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Creates a new instance of this class. 
+            </summary>
+            <param name="strInterfaceName">The system GUID of the missing interface</param>
+            <param name="strSystemGUID">The name of the missing interface</param>
+            <param name="strPluginKey">The plugin key of the missing interface</param>
+        </member>
+        <member name="T:eExNLML.PluginNotFoundArgs">
+            <summary>
+            This class represents the arguments for a PluginNotFoundCallback.
+            </summary>
+        </member>
+        <member name="P:eExNLML.PluginNotFoundArgs.Name">
+            <summary>
+            Gets the name of the missing plug-in.
+            </summary>
+        </member>
+        <member name="P:eExNLML.PluginNotFoundArgs.PluginKey">
+            <summary>
+            Gets the plugin key of the missing plug-in.
+            </summary>
+        </member>
+        <member name="M:eExNLML.PluginNotFoundArgs.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of this class. 
+            </summary>
+            <param name="strName">The name of the missing plug-in</param>
+            <param name="strPluginKey">The plugin key of the missing plug-in</param>
+        </member>
+        <member name="T:eExNLML.IEnvironment">
+            <summary>
+            Provides an interface for the management layer environments
+            </summary>
+        </member>
+        <member name="M:eExNLML.IEnvironment.GetScanners">
+            <summary>
+            Returns all scanners known in the current environment
+            </summary>
+            <returns>All scanners known in the current environment</returns>
+        </member>
+        <member name="M:eExNLML.IEnvironment.GetMITMAttacks">
+            <summary>
+            Returns all IP-based MITM-attacks known in the current environment
+            </summary>
+            <returns>All IP-based MITM-attacks known in the current environment</returns>
+        </member>
+        <member name="M:eExNLML.IEnvironment.GetAttacks">
+            <summary>
+            Returns all IP-based attacks against single hosts in the current environment
+            </summary>
+            <returns>All IP-based attacks against single hosts in the current environment</returns>
+        </member>
+        <member name="M:eExNLML.IEnvironment.GetRouters">
+            <summary>
+            Returns all routers known in the current environment
+            </summary>
+            <returns>All routers known in the current environment</returns>
+        </member>
+        <member name="P:eExNLML.IEnvironment.ActiveHandlers">
+            <summary>
+            Returns all traffic handlers in the current environment.
+            </summary>
+        </member>
+        <member name="P:eExNLML.IEnvironment.Controllers">
+            <summary>
+            Returns all controllers in the current environment.
+            </summary>
+        </member>
+        <member name="M:eExNLML.IEnvironment.GetControllerForName(System.String)">
+            <summary>
+            Gets the controller for the given name from the current environment.
+            </summary>
+            <param name="strName">The name to get the controller for.</param>
+            <returns>The controller with the given name.</returns>
+        </member>
+        <member name="M:eExNLML.IEnvironment.GetHandlerForName(System.String)">
+            <summary>
+            Gets the TrafficHandler for the given name from the current environment.
+            </summary>
+            <param name="strName">The name to get the TrafficHandler for.</param>
+            <returns>The TrafficHandler with the given name.</returns>
+        </member>
+        <member name="M:eExNLML.IEnvironment.GetControllerForHandler(eExNetworkLibrary.TrafficHandler)">
+            <summary>
+            Gets the controller for the given TrafficHandler
+            </summary>
+            <param name="thHandler">The TrafficHandler to get the controller for</param>
+            <returns>The controller for the given TrafficHandler</returns>
+        </member>
+        <member name="M:eExNLML.IEnvironment.GetPluginsByType(System.String)">
+            <summary>
+            Returns all known plug-ins with the given type.
+            </summary>
+            <returns>All known plug-ins with the given type.</returns>
+        </member>
+        <member name="M:eExNLML.IEnvironment.GetPlugins">
+            <summary>
+            Gets all plug-ins known by this environment.
+            </summary>
+            <returns>All plug-ins known by this environment.</returns>
+        </member>
+        <member name="M:eExNLML.IEnvironment.GetPlugInByKey(System.String)">
+            <summary>
+            Returns the plug-in with the given plug-in key.
+            </summary>
+            <returns>The plug-in with the given plug-in key or null, if no plug-in was found.</returns>
+        </member>
+        <member name="T:eExNLML.TaskNotificationArgs">
+            <summary>
+            This class represents the arguments of a task notification.
+            </summary>
+        </member>
+        <member name="P:eExNLML.TaskNotificationArgs.Status">
+            <summary>
+            Gets the status of the task
+            </summary>
+        </member>
+        <member name="P:eExNLML.TaskNotificationArgs.Error">
+            <summary>
+            Gets the error associated with this task or null if no error happened
+            </summary>
+        </member>
+        <member name="P:eExNLML.TaskNotificationArgs.Tag">
+            <summary>
+            Gets a tag associated with the task
+            </summary>
+        </member>
+        <member name="P:eExNLML.TaskNotificationArgs.Description">
+            <summary>
+            Gets the description of the task
+            </summary>
+        </member>
+        <member name="M:eExNLML.TaskNotificationArgs.#ctor(eExNLML.TaskStatus,System.Exception,System.Object,System.String)">
+            <summary>
+            Creates a new instance of this class.
+            </summary>
+            <param name="sStatus">The status of the task</param>
+            <param name="eError">The error associated with this task or null if no error happened</param>
+            <param name="oTag">A tag associated with the task</param>
+            <param name="strDescription">The description of the task</param>
+        </member>
+        <member name="T:eExNLML.TaskStatus">
+            <summary>
+            Defines various statistics of a task
+            </summary>
+        </member>
+        <member name="F:eExNLML.TaskStatus.Error">
+            <summary>
+            The task termintaed with an error
+            </summary>
+        </member>
+        <member name="F:eExNLML.TaskStatus.Finished">
+            <summary>
+            The task finished successfully
+            </summary>
+        </member>
+        <member name="F:eExNLML.TaskStatus.Started">
+            <summary>
+            The task was started
+            </summary>
+        </member>
+        <member name="F:eExNLML.TaskStatus.Created">
+            <summary>
+            The task was created and is ready for execution
+            </summary>
+        </member>
+        <member name="T:eExNLML.TaskNotificationCallback">
+            <summary>
+            Defines a callback to handle errors and notifications during several tasks.
+            </summary>
+            <param name="sender">The class which called the callback.</param>
+            <param name="args">The arguments of the event.</param>
+        </member>
+        <member name="T:eExNLML.TaskCallback">
+            <summary>
+            Defines a task callback, which is used to call a method from a task
+            </summary>
+            <param name="sender">The task which called the callback</param>
+        </member>
+        <member name="T:eExNLML.Task">
+            <summary>
+            This class defines a task.
+            </summary>
+        </member>
+        <member name="P:eExNLML.Task.Status">
+            <summary>
+            Gets the status of the task
+            </summary>
+        </member>
+        <member name="P:eExNLML.Task.Error">
+            <summary>
+            Gets the error associated with this task or null if no error happened
+            </summary>
+        </member>
+        <member name="P:eExNLML.Task.Tag">
+            <summary>
+            Gets a tag associated with the task
+            </summary>
+        </member>
+        <member name="P:eExNLML.Task.Description">
+            <summary>
+            Gets the description of the task
+            </summary>
+        </member>
+        <member name="M:eExNLML.Task.#ctor(eExNLML.TaskCallback,eExNLML.TaskNotificationCallback,System.Object,System.String)">
+            <summary>
+            Creates a new instance of this class.
+            </summary>
+            <param name="cTask">The method to execute</param>
+            <param name="cTaskNotificationCallback">The callback method for task notifications</param>
+            <param name="oTag">A tag associated with the task</param>
+            <param name="strDescription">The description of the task</param>
+        </member>
+        <member name="M:eExNLML.Task.Execute">
+            <summary>
+            Executes this task on the calling thread.
+            </summary>
+        </member>
+        <member name="T:eExNLML.TrafficHandlerPort">
+            <summary>
+            This class represents a traffic handler port which is used in the management layer to 
+            represent ports of traffic handlers which can be connected together. 
+            </summary>
+        </member>
+        <member name="P:eExNLML.TrafficHandlerPort.Name">
+            <summary>
+            Gets the name of this port.
+            </summary>
+        </member>
+        <member name="P:eExNLML.TrafficHandlerPort.CanAttach">
+            <summary>
+            Gets a bool indicating whether handlers can attach to this port.
+            </summary>
+        </member>
+        <member name="P:eExNLML.TrafficHandlerPort.Description">
+            <summary>
+            Gets the description of this port.
+            </summary>
+        </member>
+        <member name="P:eExNLML.TrafficHandlerPort.Abbreviation">
+            <summary>
+            Gets the abbreviation of this traffic handler port.
+            </summary>
+        </member>
+        <member name="P:eExNLML.TrafficHandlerPort.PortType">
+            <summary>
+            Gets the type of this port.
+            </summary>
+        </member>
+        <member name="P:eExNLML.TrafficHandlerPort.ParentHandler">
+            <summary>
+            Gets the Traffic Handler this port belongs to.
+            </summary>
+        </member>
+        <member name="P:eExNLML.TrafficHandlerPort.ParentController">
+            <summary>
+            Gets the Handler Controller this port belongs to.
+            </summary>
+        </member>
+        <member name="T:eExNLML.TrafficHandlerPort.PortActionEventHandler">
+            <summary>
+            This delegate describes a method which is used to handle port attach or detach events.
+            </summary>
+            <param name="sender">The traffic handler port which rised the event</param>
+            <param name="attacher">The traffic handler port which wants to attach to sender</param>
+            <returns>Bool indicating if after the attach/detach process another port can still be attached to this port.</returns>
+        </member>
+        <member name="T:eExNLML.TrafficHandlerPort.PortQueryEventHandler">
+            <summary>
+            This delegate describes a method which is used to query the port connection status.
+            </summary>
+            <param name="sender">The first traffic handler port.</param>
+            <param name="attacher">The second traffic handler port.</param>
+            <returns>Bool indicating whether the given ports are connected or not.</returns>
+        </member>
+        <member name="T:eExNLML.TrafficHandlerPort.PortNotificationEventHandler">
+            <summary>
+            This delegate describes a method which is used to handle port attached or detached events.
+            </summary>
+            <param name="sender">The traffic handler port which rised the event</param>
+            <param name="attacher">The traffic handler port which wants to attach to sender</param>
+        </member>
+        <member name="E:eExNLML.TrafficHandlerPort.HandlerAttaching">
+            <summary>
+            This event is fired when a handler tries to attach to this port.
+            </summary>
+        </member>
+        <member name="E:eExNLML.TrafficHandlerPort.HandlerDetaching">
+            <summary>
+            This event is fired when a handler tries to detach from this port.
+            </summary>
+        </member>
+        <member name="E:eExNLML.TrafficHandlerPort.HandlerAttached">
+            <summary>
+            This event is fired when a handler successfully attached to this port.
+            </summary>
+        </member>
+        <member name="E:eExNLML.TrafficHandlerPort.HandlerDetached">
+            <summary>
+            This event is fired when a handler successfully detached to this port.
+            </summary>
+        </member>
+        <member name="E:eExNLML.TrafficHandlerPort.HandlerStatusCallback">
+            <summary>
+            This event is fired when the status of a port is queried.
+            The connected delegate is responsible for delivering the port status.
+            </summary>
+        </member>
+        <member name="M:eExNLML.TrafficHandlerPort.#ctor(eExNLML.Extensibility.HandlerController,System.String,System.String,eExNLML.PortType,System.String)">
+            <summary>
+            Creates a new instance of this class with the given parameters
+            </summary>
+            <param name="hcController">The parent Handler Controller</param>
+            <param name="strName">The name of this port</param>
+            <param name="strDescription">The description of this port</param>
+            <param name="pType">The type of this port</param>
+            <param name="strAbbreviation">The abbreviation of this port's name</param>
+        </member>
+        <member name="M:eExNLML.TrafficHandlerPort.#ctor(eExNLML.Extensibility.HandlerController,eExNetworkLibrary.TrafficHandler,System.String,System.String,eExNLML.PortType,System.String)">
+            <summary>
+            Creates a new instance of this class with the given parameters
+            </summary>
+            <param name="hcController">The parent Handler Controller</param>
+            <param name="thHandler">The TrafficHandler controlled by this port</param>
+            <param name="strName">The name of this port</param>
+            <param name="strDescription">The description of this port</param>
+            <param name="pType">The type of this port</param>
+            <param name="strAbbreviation">The abbreviation of this port's name</param>
+        </member>
+        <member name="M:eExNLML.TrafficHandlerPort.AttachHandler(eExNLML.TrafficHandlerPort)">
+            <summary>
+            Tries to attach the given handler
+            </summary>
+            <param name="th">The handler to attach</param>
+        </member>
+        <member name="M:eExNLML.TrafficHandlerPort.DetachHandler(eExNLML.TrafficHandlerPort)">
+            <summary>
+            Tries to detach the given handler
+            </summary>
+            <param name="th">The handler to detach</param>
+        </member>
+        <member name="M:eExNLML.TrafficHandlerPort.IsConnectedTo(eExNLML.TrafficHandlerPort)">
+            <summary>
+            Checks whether this port is connected to the given port.
+            </summary>
+            <param name="th">The port to check the connection with.</param>
+            <returns>A bool indicating whether this port is connected to the given port.</returns>
+        </member>
+        <member name="T:eExNLML.PortType">
+            <summary>
+            Describes the type of an traffic handler port
+            </summary>
+        </member>
+        <member name="F:eExNLML.PortType.Input">
+            <summary>
+            An input port
+            </summary>
+        </member>
+        <member name="F:eExNLML.PortType.Output">
+            <summary>
+            An output port
+            </summary>
+        </member>
+        <member name="F:eExNLML.PortType.InterfaceIO">
+            <summary>
+            An interfaceIO port for attaching interfaces
+            </summary>
+        </member>
+        <member name="F:eExNLML.PortType.Interface">
+            <summary>
+            An interface port for attaching interface I/O ports
+            </summary>
+        </member>
+    </members>
+</doc>

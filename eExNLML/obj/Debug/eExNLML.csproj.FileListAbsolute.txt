@@ -1,0 +1,14 @@
+D:\eexnetworklibrary-master\eExNLML\obj\Debug\eExNLML.csprojAssemblyReference.cache
+D:\eexnetworklibrary-master\eExNLML\obj\Debug\eExNLML.csproj.CoreCompileInputs.cache
+D:\eexnetworklibrary-master\eExNLML\bin\Debug\Changelog.txt
+D:\eexnetworklibrary-master\eExNLML\bin\Debug\NLMLCompilation.xsd
+D:\eexnetworklibrary-master\eExNLML\bin\Debug\NLMLPluginDescription.xsd
+D:\eexnetworklibrary-master\eExNLML\bin\Debug\eExNLML.xml
+D:\eexnetworklibrary-master\eExNLML\bin\Debug\eExNLML.dll
+D:\eexnetworklibrary-master\eExNLML\bin\Debug\eExNLML.pdb
+D:\eexnetworklibrary-master\eExNLML\bin\Debug\eExNetworkLibrary.dll
+D:\eexnetworklibrary-master\eExNLML\bin\Debug\eExNetworkLibrary.pdb
+D:\eexnetworklibrary-master\eExNLML\bin\Debug\eExNetworkLibrary.xml
+D:\eexnetworklibrary-master\eExNLML\obj\Debug\eExNLML.csproj.CopyComplete
+D:\eexnetworklibrary-master\eExNLML\obj\Debug\eExNLML.dll
+D:\eexnetworklibrary-master\eExNLML\obj\Debug\eExNLML.pdb
